@@ -14,4 +14,7 @@ interface LoveDao{
     @Query("SELECT * FROM love_model")
     fun getAll():List<LoveModel>
 
+    @Query("SELECT * FROM love_model ORDER BY firstName ASC")
+    fun getAllSort():List<LoveModel>
+
 }

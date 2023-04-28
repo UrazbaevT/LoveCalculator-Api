@@ -21,11 +21,11 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val list = App.appDatabase.loveDao().getAll()
+        val list = App.appDatabase.loveDao().getAllSort()
         var data = ""
 
         list.forEach {
-            data += "${it.firstName}\n${it.secondName}\n${it.percentage}\n\n"
+            data += "${it.firstName}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tПроцент:\n❤\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t${it.percentage}\n${it.secondName}\n\n"
         }
 
         binding.resultTv.text = data
