@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.example.lovecalculator_api.Pref
 import com.example.lovecalculator_api.R
 import com.example.lovecalculator_api.databinding.FragmentOnBoardingBinding
@@ -34,8 +35,10 @@ class OnBoardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = OnBoardingAdapter(this::onClick)
         binding.viewPager.adapter = adapter
+
         binding.indicator.setViewPager(binding.viewPager)
         adapter.registerAdapterDataObserver(binding.indicator.adapterDataObserver)
+
         if (pref.isUserSeen()){
             findNavController().navigate(R.id.firstFragment)
         }

@@ -5,16 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+<!--    <ImageView-->
+<!--        android:id="@+id/image"-->
+<!--        android:layout_width="410dp"-->
+<!--        android:layout_height="450dp"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@mipmap/ic_launcher"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/image"
         android:layout_width="410dp"
         android:layout_height="450dp"
-        android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
     <TextView
         android:id="@+id/title"
