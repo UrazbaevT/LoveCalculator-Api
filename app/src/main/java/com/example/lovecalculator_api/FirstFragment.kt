@@ -39,12 +39,18 @@ class FirstFragment : Fragment() {
 
     private fun initListener() {
         with(binding) {
+            btnHistory.setOnClickListener {
+                findNavController().navigate(R.id.historyFragment)
+            }
             btnCalculate.setOnClickListener {
                 viewModel.getLiveLove(
                     firstName = firstEt.text.toString(),
                     secondName = secondEt.text.toString()
                 ).observe(viewLifecycleOwner,
                     Observer {
+
+                        App.appDatabase.loveDao().insert(it)
+
                         Log.d("ololo", "initListener: $it")
                         findNavController().navigate(
                             R.id.resultFragment, bundleOf(

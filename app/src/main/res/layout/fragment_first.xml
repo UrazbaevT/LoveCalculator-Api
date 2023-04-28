@@ -76,4 +76,12 @@
         android:textSize="18sp"
         android:textAllCaps="false"/>
 
+    <ImageView
+        android:id="@+id/btnHistory"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/history" />
+
+
 </LinearLayout>

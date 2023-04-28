@@ -25,8 +25,15 @@
 
     <fragment
         android:id="@+id/onBoardingFragment"
+        tools:layout="@layout/fragment_on_boarding"
         android:name="com.example.lovecalculator_api.onBoarding.OnBoardingFragment"
         android:label="OnBoardingFragment" />
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.lovecalculator_api.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 
 
 </navigation>

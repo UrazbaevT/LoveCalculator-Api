@@ -1,5 +1,7 @@
 package com.example.lovecalculator_api.remote
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 //    {
@@ -9,7 +11,10 @@ import com.google.gson.annotations.SerializedName
 //        "result": "All the best!"
 //    }
 
+@Entity(tableName = "love_model")
 data class LoveModel (
+    @PrimaryKey(autoGenerate = true)
+    var id:Int?,
     @SerializedName("fname")
     val firstName: String,
     @SerializedName("sname")
