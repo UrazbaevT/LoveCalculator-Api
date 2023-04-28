@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoveCalculator-Api</string>
+    <string name="app_name">LoveCalculator</string>
     <string name="first_name">First Name</string>
     <string name="second_name">Second Name</string>
     <string name="get_percentage">Get Percentage</string>

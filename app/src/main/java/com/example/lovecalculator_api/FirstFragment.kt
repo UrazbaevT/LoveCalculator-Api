@@ -7,14 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator_api.databinding.FragmentFirstBinding
-import retrofit2.Call
-import retrofit2.Response
+import com.example.lovecalculator_api.viewmodel.LoveViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
+    private val viewModel: LoveViewModel by viewModels()
+
+    @Inject
+    lateinit var utils: Utils
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,27 +40,20 @@ class FirstFragment : Fragment() {
     private fun initListener() {
         with(binding) {
             btnCalculate.setOnClickListener {
-                LoveService().api.calculatePercentage(
+                viewModel.getLiveLove(
                     firstName = firstEt.text.toString(),
                     secondName = secondEt.text.toString()
-                ).enqueue(object : retrofit2.Callback<LoveModel> {
-                    override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
-                        if (response.isSuccessful) {
-                            Log.e("ololo", "onResponse: ${response.body()}")
-                            findNavController().navigate(
-                                R.id.resultFragment,
-                                bundleOf("result" to response.body())
+                ).observe(viewLifecycleOwner,
+                    Observer {
+                        Log.d("ololo", "initListener: $it")
+                        findNavController().navigate(
+                            R.id.resultFragment, bundleOf(
+                                "result" to it
                             )
-                        }
-                    }
-
-                    override fun onFailure(call: Call<LoveModel>, t: Throwable) {
-                        Log.e("ololo", "onFailure: ${t.message}")
-                    }
-
-                })
+                        )
+                    })
+                utils.showToast(requireContext())
             }
         }
     }
-
 }
